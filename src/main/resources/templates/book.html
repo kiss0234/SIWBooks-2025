@@ -29,9 +29,10 @@
                     <div class="info-card" th:if="${!book.authors.isEmpty()}">
                         <div class="info-label">Authors</div>
                         <div class="authors-list">
-                            <a href="#" class="author-link" th:each="author : ${book.authors}" 
-                               th:text="${author.name} + ' ' + ${author.surname}">
-                                Dante Alighieri
+                            <a th:each="author : ${book.authors}" 
+							   th:href="@{/author/{authorId}(authorId=${author.id})}" 
+							   class="author-link" 
+                               th:text="${author.name + ' ' + author.surname}">
                             </a>
                         </div>
                     </div>
