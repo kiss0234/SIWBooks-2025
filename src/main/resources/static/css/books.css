@@ -1,0 +1,241 @@
+:root {
+    --book-burgundy: #8B1538;
+    --book-gold: #D4AF37;
+    --book-cream: #F5F5DC;
+    --book-brown: #8B4513;
+    --book-dark-green: #2F4F2F;
+    --book-light-brown: #DEB887;
+    --book-sage: #87A96B;
+    --library-primary: #2C3E50;
+    --library-secondary: #34495E;
+    --library-accent: #E67E22;
+}
+
+body {
+    background: linear-gradient(135deg, var(--book-cream) 0%, #F0E68C 100%);
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+}
+
+.album {
+    padding: 3rem 0;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--book-burgundy);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: var(--book-brown);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.decorative-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--book-gold) 20%, var(--book-burgundy) 50%, var(--book-gold) 80%, transparent 100%);
+    margin: 2rem auto;
+    border-radius: 1px;
+    width: 200px;
+}
+
+.no-books-message {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 21, 56, 0.1);
+    margin: 2rem auto;
+    max-width: 500px;
+}
+
+.no-books-message span {
+    font-size: 1.3rem;
+    color: var(--book-brown);
+    font-style: italic;
+}
+
+.book-card {
+    background: linear-gradient(135deg, var(--book-burgundy) 0%, var(--book-dark-green) 100%);
+    border: 1px solid rgba(243, 156, 18, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    height: 200px;
+    position: relative;
+    color: white;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, var(--library-secondary) 0%, var(--library-primary) 100%);
+}
+
+.book-card .row {
+    height: 100%;
+}
+
+.book-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.book-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.book-date {
+    color: var(--book-gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.book-description {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: auto;
+    flex-grow: 1;
+}
+
+.book-link {
+    color: var(--library-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.book-link:hover {
+    color: var(--book-gold);
+    gap: 0.8rem;
+}
+
+.book-link::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.book-link:hover::after {
+    transform: translateX(3px);
+}
+
+.book-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: relative;
+}
+
+.book-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-image {
+    transform: scale(1.05);
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.card-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+.book-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--book-gold), var(--book-burgundy), var(--book-gold));
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .book-card {
+        height: auto;
+        min-height: 300px;
+    }
+    
+    .book-image-container {
+        min-height: 200px;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .album {
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .book-card .row {
+        flex-direction: column;
+    }
+    
+    .book-image-container {
+        order: -1;
+        min-height: 180px;
+    }
+    
+    .book-content {
+        padding: 1.5rem;
+    }
+}

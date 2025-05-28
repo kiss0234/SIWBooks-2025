@@ -1,0 +1,171 @@
+:root {
+    --book-burgundy: #8B1538;
+    --book-gold: #D4AF37;
+    --book-cream: #F5F5DC;
+    --book-brown: #8B4513;
+    --book-dark-green: #2F4F2F;
+    --book-light-brown: #DEB887;
+    --book-sage: #87A96B;
+}
+
+body {
+    background: linear-gradient(135deg, var(--book-cream) 0%, #F0E68C 100%);
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.form-container {
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(139, 21, 56, 0.15);
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.header-section {
+    background: linear-gradient(135deg, var(--book-burgundy) 0%, var(--book-dark-green) 100%);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+}
+
+.brand-title {
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.brand-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-style: italic;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.form-section {
+    padding: 3rem 2.5rem;
+}
+
+.form-label {
+    color: var(--book-burgundy);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    display: block;
+    width: 100%;
+}
+
+.form-control {
+    border: 2px solid rgba(139, 21, 56, 0.15);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    background: rgba(245, 245, 220, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+}
+
+.form-control:focus {
+    border-color: var(--book-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    background: white;
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.form-control:hover {
+    border-color: var(--book-sage);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.form-control::placeholder {
+    color: rgba(139, 21, 56, 0.4);
+    font-style: italic;
+}
+
+.btn-register {
+    background: linear-gradient(135deg, var(--book-burgundy) 0%, var(--book-dark-green) 100%);
+    border: none;
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(139, 21, 56, 0.2);
+    width: 100%;
+    font-family: 'Georgia', serif;
+}
+
+.btn-register:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(139, 21, 56, 0.3);
+    background: linear-gradient(135deg, var(--book-dark-green) 0%, var(--book-burgundy) 100%);
+}
+
+.decorative-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--book-gold) 20%, var(--book-burgundy) 50%, var(--book-gold) 80%, transparent 100%);
+    margin: 2rem 0;
+    border-radius: 1px;
+}
+
+.mb-3 {
+    margin-bottom: 2rem !important;
+}
+
+.welcome-text {
+    color: var(--book-brown);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+.error-message {
+	color:red;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        margin: 1rem;
+        border-radius: 15px;
+    }
+    
+    .brand-title {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+    
+    .form-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .header-section {
+        padding: 1.6rem 1.5rem;
+    }
+}
