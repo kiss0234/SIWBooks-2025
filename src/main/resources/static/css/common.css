@@ -1,0 +1,103 @@
+:root {
+    --primary-burgundy: #8B1538;
+    --primary-gold: #D4AF37;
+    --primary-cream: #F5F5DC;
+    --primary-brown: #8B4513;
+    --primary-dark-green: #2F4F2F;
+    --primary-light-brown: #DEB887;
+    --primary-sage: #87A96B;
+
+    --library-primary: #2C3E50;
+    --library-secondary: #34495E;
+    --library-accent: #E67E22;
+}
+
+
+
+.navbar {
+    background: linear-gradient(135deg, #5a0a20 0%, #1f361c 100%);
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	height: 56px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    width: 100%;
+    z-index: 10;
+    position: static;
+}
+
+.navbar-brand {
+    color: var(--primary-gold) !important;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+.navbar-nav .nav-link {
+    color: #F5F5DC !important;
+    transition: color 0.3s ease;
+    margin: 0 0.4rem;
+    font-size: 0.95rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-gold) !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--primary-gold) !important;
+}
+
+.navbar-nav .nav-link.disabled {
+    color: #666 !important;
+    cursor: not-allowed;
+}
+
+.search-form {
+    margin-left: 1rem;
+}
+
+.search-input {
+    background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: var(--library-primary);
+    width: 200px;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+
+.footer {
+	position: relative;
+    background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-dark-green) 100%);
+    color: var(--primary-gold);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    color: #F5F5DC;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-form {
+        margin-left: 2rem;
+    }
+}

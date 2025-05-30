@@ -1,21 +1,19 @@
-:root {
-    --author-burgundy: #8B1538;
-    --author-gold: #D4AF37;
-    --author-cream: #F5F5DC;
-    --author-brown: #8B4513;
-    --author-dark-green: #2F4F2F;
-    --author-light-brown: #DEB887;
-    --author-sage: #87A96B;
-    --library-primary: #2C3E50;
-    --library-secondary: #34495E;
-    --library-accent: #E67E22;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
+  overflow-x: hidden;
+  overscroll-behavior: contain;
 }
 
+
 body {
-    background: linear-gradient(135deg, var(--author-cream) 0%, var(--author-light-brown) 100%);
+    background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
     min-height: 100vh;
     font-family: 'Georgia', serif;
-    color: var(--library-primary);
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -32,8 +30,8 @@ body {
 }
 
 .author-header {
-    background: linear-gradient(135deg, var(--author-burgundy), var(--author-dark-green));
-    color: var(--author-cream);
+    background: linear-gradient(135deg, var(--primary-burgundy), var(--primary-dark-green));
+    color: var(--primary-cream);
     padding: 2rem;
     text-align: center;
     position: relative;
@@ -81,7 +79,7 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(139, 21, 56, 0.3);
-    border: 3px solid var(--author-gold);
+    border: 3px solid var(--primary-gold);
 }
 
 .author-image {
@@ -101,9 +99,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--author-light-brown), var(--author-sage));
+    background: linear-gradient(135deg, var(--primary-light-brown), var(--primary-sage));
     font-size: 4rem;
-    color: var(--author-burgundy);
+    color: var(--primary-burgundy);
 }
 
 .info-card {
@@ -111,12 +109,12 @@ body {
     border-radius: 10px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    border-left: 4px solid var(--author-gold);
+    border-left: 4px solid var(--primary-gold);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .info-label {
-    color: var(--author-burgundy);
+    color: var(--primary-burgundy);
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -135,7 +133,7 @@ body {
 }
 
 .book-link {
-    background: var(--author-gold);
+    background: var(--primary-gold);
     color: var(--library-primary);
     text-decoration: none;
     padding: 0.3rem 0.8rem;
@@ -146,9 +144,9 @@ body {
 }
 
 .book-link:hover {
-    background: var(--author-burgundy);
-    color: var(--author-cream);
-    border-color: var(--author-gold);
+    background: var(--primary-burgundy);
+    color: var(--primary-cream);
+    border-color: var(--primary-gold);
     transform: translateY(-2px);
 }
 
