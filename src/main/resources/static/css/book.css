@@ -11,11 +11,22 @@
     --library-accent: #E67E22;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(135deg, var(--book-cream) 0%, #F0E68C 100%);
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+
 body {
-    background: linear-gradient(135deg, var(--book-cream) 0%, var(--book-light-brown) 100%);
+    background: linear-gradient(135deg, var(--book-cream) 0%, #F0E68C 100%);
     min-height: 100vh;
     font-family: 'Georgia', serif;
-    color: var(--library-primary);
+    margin: 0;
+    padding: 0;
 }
 
 .container {

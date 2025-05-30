@@ -1,20 +1,19 @@
-:root {
-    --author-burgundy: #8B1538;
-    --author-gold: #D4AF37;
-    --author-cream: #F5F5DC;
-    --author-brown: #8B4513;
-    --author-dark-green: #2F4F2F;
-    --author-light-brown: #DEB887;
-    --author-sage: #87A96B;
-    --library-primary: #2C3E50;
-    --library-secondary: #34495E;
-    --library-accent: #E67E22;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
+  overflow-x: hidden;
+  overscroll-behavior: contain;
 }
 
+
 body {
-    background: linear-gradient(135deg, var(--author-cream) 0%, #F0E68C 100%);
+    background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
     min-height: 100vh;
     font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
 }
 
 .album {
@@ -34,7 +33,7 @@ body {
 .page-title {
     font-size: 3rem;
     font-weight: 300;
-    color: var(--author-burgundy);
+    color: var(--primary-burgundy);
     letter-spacing: 2px;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -42,14 +41,14 @@ body {
 
 .page-subtitle {
     font-size: 1.2rem;
-    color: var(--author-brown);
+    color: var(--primary-brown);
     font-style: italic;
     opacity: 0.8;
 }
 
 .decorative-divider {
     height: 3px;
-    background: linear-gradient(90deg, transparent 0%, var(--author-gold) 20%, var(--author-burgundy) 50%, var(--author-gold) 80%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, var(--primary-gold) 20%, var(--primary-burgundy) 50%, var(--primary-gold) 80%, transparent 100%);
     margin: 2rem auto;
     border-radius: 1px;
     width: 200px;
@@ -67,12 +66,12 @@ body {
 
 .no-authors-message span {
     font-size: 1.3rem;
-    color: var(--author-brown);
+    color: var(--primary-brown);
     font-style: italic;
 }
 
 .author-card {
-    background: linear-gradient(135deg, var(--author-burgundy) 0%, var(--author-dark-green) 100%);
+    background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-dark-green) 100%);
     border: 1px solid rgba(243, 156, 18, 0.2);
     border-radius: 16px;
     overflow: hidden;
@@ -111,7 +110,7 @@ body {
 }
 
 .author-date {
-    color: var(--author-gold);
+    color: var(--primary-gold);
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -140,7 +139,7 @@ body {
 }
 
 .author-link:hover {
-    color: var(--author-gold);
+    color: var(--primary-gold);
     gap: 0.8rem;
 }
 
@@ -202,247 +201,7 @@ body {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--author-gold), var(--author-burgundy), var(--author-gold));
-    opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-    .author-card {
-        height: auto;
-        min-height: 300px;
-    }
-    
-    .author-image-container {
-        min-height: 200px;
-    }
-    
-    .page-title {
-        font-size: 2.2rem;
-    }
-    
-    .album {
-        padding: 2rem 0;
-    }
-}
-
-@media (max-width: 576px) {
-    .author-card .row {
-        flex-direction: column;
-    }
-    
-    .author-image-container {
-        order: -1;
-        min-height: 180px;
-    }
-    
-    .author-content {
-        padding: 1.5rem;
-    }
-}:root {
-    --author-burgundy: #8B1538;
-    --author-gold: #D4AF37;
-    --author-cream: #F5F5DC;
-    --author-brown: #8B4513;
-    --author-dark-green: #2F4F2F;
-    --author-light-brown: #DEB887;
-    --author-sage: #87A96B;
-    --library-primary: #2C3E50;
-    --library-secondary: #34495E;
-    --library-accent: #E67E22;
-}
-
-body {
-    background: linear-gradient(135deg, var(--author-cream) 0%, #F0E68C 100%);
-    min-height: 100vh;
-    font-family: 'Georgia', serif;
-}
-
-.album {
-    padding: 3rem 0;
-}
-
-.container {
-    max-width: 1200px;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 2rem 0;
-}
-
-.page-title {
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--author-burgundy);
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.page-subtitle {
-    font-size: 1.2rem;
-    color: var(--author-brown);
-    font-style: italic;
-    opacity: 0.8;
-}
-
-.decorative-divider {
-    height: 3px;
-    background: linear-gradient(90deg, transparent 0%, var(--author-gold) 20%, var(--author-burgundy) 50%, var(--author-gold) 80%, transparent 100%);
-    margin: 2rem auto;
-    border-radius: 1px;
-    width: 200px;
-}
-
-.no-authors-message {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(139, 21, 56, 0.1);
-    margin: 2rem auto;
-    max-width: 500px;
-}
-
-.no-authors-message span {
-    font-size: 1.3rem;
-    color: var(--author-brown);
-    font-style: italic;
-}
-
-.author-card {
-    background: linear-gradient(135deg, var(--author-burgundy) 0%, var(--author-dark-green) 100%);
-    border: 1px solid rgba(243, 156, 18, 0.2);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    height: 200px;
-    position: relative;
-    color: white;
-}
-
-.author-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    background: linear-gradient(135deg, var(--library-secondary) 0%, var(--library-primary) 100%);
-}
-
-.author-card .row {
-    height: 100%;
-}
-
-.author-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    position: relative;
-}
-
-.author-name {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-}
-
-.author-date {
-    color: var(--author-gold);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.author-description {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: auto;
-    flex-grow: 1;
-}
-
-.author-link {
-    color: var(--library-accent);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.author-link:hover {
-    color: var(--author-gold);
-    gap: 0.8rem;
-}
-
-.author-link::after {
-    content: '→';
-    transition: transform 0.3s ease;
-}
-
-.author-link:hover::after {
-    transform: translateX(3px);
-}
-
-.author-image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
-    height: 100%;
-    position: relative;
-}
-
-.author-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.author-card:hover .author-image {
-    transform: scale(1.05);
-}
-
-.placeholder-img {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.5rem;
-    font-weight: 300;
-}
-
-.card-texture {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    pointer-events: none;
-}
-
-.author-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--author-gold), var(--author-burgundy), var(--author-gold));
+    background: linear-gradient(90deg, var(--primary-gold), var(--primary-burgundy), var(--primary-gold));
     opacity: 0.7;
 }
 
