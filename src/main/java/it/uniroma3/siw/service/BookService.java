@@ -24,4 +24,8 @@ public class BookService {
 	public Book findById(Long id) {
 		return this.bookRepository.findById(id).get();
 	}
+
+	public boolean existsByTitle(String title) {
+		return this.bookRepository.existsByTitle(title);
+	}
 }
