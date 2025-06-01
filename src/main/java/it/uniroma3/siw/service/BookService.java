@@ -28,4 +28,9 @@ public class BookService {
 	public boolean existsByTitle(String title) {
 		return this.bookRepository.existsByTitle(title);
 	}
+
+	public List<Book> findAllByTitleContaining(String title) {
+		List<Book> books = (List<Book>) this.bookRepository.findAllByTitleContaining(title);
+		return books;
+	}
 }
