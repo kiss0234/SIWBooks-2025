@@ -1,20 +1,22 @@
 package it.uniroma3.siw.model;
 
+import java.util.Base64;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.*;
 
 @Entity
-public class BookImage {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Lob
+    @JdbcTypeCode(SqlTypes.VARBINARY)
     private byte[] data;
-
-    @ManyToOne
-    @JoinColumn(name = "book_id")
-    private Book book;
 
 	public Long getId() {
 		return id;
@@ -32,12 +34,15 @@ public class BookImage {
 		this.data = data;
 	}
 
-	public Book getBook() {
-		return book;
-	}
+	
+	@Transient
+	private String base64Image;
 
-	public void setBook(Book book) {
-		this.book = book;
+	public String getBase64Image() {
+	    if (this.data != null) {
+	        return Base64.getEncoder().encodeToString(this.data);
+	    }
+	    return null;
 	}
 
     

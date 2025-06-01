@@ -20,4 +20,10 @@ public class GlobalController {
         }
         return user;
     }
+    
+    @ModelAttribute("isAuthenticated")
+    public boolean isAuthenticated(Authentication authentication) {
+        return authentication != null && authentication.isAuthenticated() 
+               && !(authentication instanceof AnonymousAuthenticationToken);
+    }
 }

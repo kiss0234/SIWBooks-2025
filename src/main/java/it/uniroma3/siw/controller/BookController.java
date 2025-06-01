@@ -1,6 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,9 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.controller.validator.BookValidator;
 import it.uniroma3.siw.model.Book;
-
+import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.service.BookService;
 import jakarta.validation.Valid;
 
@@ -18,6 +22,7 @@ import jakarta.validation.Valid;
 public class BookController {
 
 	@Autowired BookService bookService;
+	@Autowired BookValidator bookValidator;
 	
 	@GetMapping("/books")
 	public String getBooks(Model model) {
@@ -32,18 +37,44 @@ public class BookController {
 		return "book";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/admin/formNewBook")
 	public String formNewMovie(Model model) {
-		model.addAttribute("book", new Book());
-		return "admin/formNewBook";
+			model.addAttribute("book", new Book());
+			return "admin/formNewBook";
 	}
 	
-	@PostMapping("/admin/book")
-	public String newBook(@Valid @ModelAttribute Book book, BindingResult bindingResult, Model model) {
-		//TODO: aggiungere validation book per duplicati
-		if(bindingResult.hasErrors())
-			return "admin/formNewBook";
-		this.bookService.save(book);
-		return "redirect:book/" + book.getId();
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PostMapping("/admin/newBook")
+	public String newBook(
+	    @Valid @ModelAttribute Book book,
+	    BindingResult bindingResult,
+	    @RequestParam("thumbnail") MultipartFile imageFile,
+	    Model model) {
+		
+	    if (imageFile == null || imageFile.isEmpty()) {
+	        model.addAttribute("imageError", "Must upload an image.");
+	        return "admin/formNewBook";
+	    }
+	    
+	    this.bookValidator.validate(book, bindingResult);
+	    
+	    if (bindingResult.hasErrors()) {
+	        return "admin/formNewBook";
+	    }
+	    
+	    try {
+	        Image image = new Image();
+	        image.setData(imageFile.getBytes());
+	        book.setCover(image);
+
+	    } catch (Exception e) {
+	        model.addAttribute("uploadError", "Error rendering the image");
+	        return "admin/formNewBook";
+	    }
+
+	    this.bookService.save(book);
+	    return "redirect:/book/" + book.getId();
 	}
+
 }

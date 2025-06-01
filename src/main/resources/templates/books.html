@@ -21,6 +21,9 @@
 	        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
 	        <li class="nav-item"><a class="nav-link" href="/books">Books</a></li>
 	        <li class="nav-item"><a class="nav-link" href="/authors">Authors</a></li>
+			<li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" href="/logout">Logout</a></li>
+			<li class="nav-item" sec:authorize="!isAuthenticated()"><a class="nav-link" href="/login">Login</a></li>
+			<li class="nav-item" sec:authorize="!isAuthenticated()"><a class="nav-link" href="/register">Sign-Up</a></li>
 	      </ul>
 	      <form class="d-flex search-form" role="search">
 	        <input class="form-control search-input" type="search" placeholder="Search books..." aria-label="Search" />
@@ -36,7 +39,13 @@
                 <p class="page-subtitle">Discover your next great read</p>
                 <div class="decorative-divider"></div>
             </div>
-
+			
+			<div sec:authorize="hasAuthority('ADMIN')" class="admin-controls">
+				<a th:href="@{admin/formNewBook}" class="add-book-btn">
+			        Add New Book
+			    </a>
+			</div>
+			
             <div th:if="${books.isEmpty()}" class="no-books-message">
                 <span>There are no books in the system</span>
             </div>
@@ -60,12 +69,11 @@
                             </div>
                             <div class="col-4">
                                 <div class="book-image-container">
-                                    <img th:if="${book.base64Image != null}"
-                                         th:src="'data:image/jpeg;base64,' + ${book.base64Image}"
+                                    <img th:if="${book.cover.base64Image != null}"
+                                         th:src="'data:image/jpeg;base64,' + ${book.cover.base64Image}"
                                          alt="Book Cover"
                                          class="book-image" />
-                                    
-                                    <div th:if="${book.base64Image == null}" class="placeholder-img">
+                                    <div th:if="${book.cover.base64Image == null}" class="placeholder-img">
                                         📚
                                     </div>
                                 </div>

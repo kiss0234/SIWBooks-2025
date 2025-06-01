@@ -1,20 +1,17 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
-import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Transient;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Author {
@@ -35,23 +32,11 @@ public class Author {
 	
 	private String infos;
 	
-	@Lob
-	@JdbcTypeCode(SqlTypes.VARBINARY)
-	private byte[] authorPhoto;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Image authorPhoto;
 	
 	@ManyToMany
 	private List<Book> books;
-
-	@Transient
-	private String base64Image;
-
-	public String getBase64Image() {
-	    if (this.authorPhoto != null) {
-	        return Base64.getEncoder().encodeToString(this.authorPhoto);
-	    }
-	    return null;
-	}
-	
 	
 	public Long getId() {
 		return id;
@@ -109,11 +94,11 @@ public class Author {
 		this.nationality = nationality;
 	}
 
-	public byte[] getAuthorPhoto() {
+	public Image getAuthorPhoto() {
 		return authorPhoto;
 	}
 
-	public void setAuthorPhoto(byte[] authorPhoto) {
+	public void setAuthorPhoto(Image authorPhoto) {
 		this.authorPhoto = authorPhoto;
 	}
 

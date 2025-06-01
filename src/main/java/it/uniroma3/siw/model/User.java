@@ -35,7 +35,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Review> reviews;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy ="user")
 	private Credentials credentials;
 
 	public Long getId() {

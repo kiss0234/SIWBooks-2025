@@ -1,21 +1,21 @@
 package it.uniroma3.siw.model;
 
-import java.util.Base64;
+
 import java.util.List;
 import java.util.Objects;
 
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 public class Book {
@@ -24,34 +24,28 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String title;
 	
+	@NotBlank
 	private String description; 
 	
+	@NotNull
+	@Positive
 	private int publicationDate;
 	
-	@Lob
-	@JdbcTypeCode(SqlTypes.VARBINARY)
-	private byte[] cover;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Image cover;
 	
 	@ManyToMany(mappedBy="books")
 	private List<Author> authors;
 	
-	@OneToMany(mappedBy="book", cascade = CascadeType.ALL)
-	private List<BookImage> immagini;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Image> immagini;
 
 	@OneToMany(mappedBy="bookReviewed")
 	private List<Review> reviews;
 	
-	@Transient
-	private String base64Image;
-
-	public String getBase64Image() {
-	    if (this.cover != null) {
-	        return Base64.getEncoder().encodeToString(this.cover);
-	    }
-	    return null;
-	}
 	
 	public Long getId() {
 		return id;
@@ -61,11 +55,11 @@ public class Book {
 		this.id = id;
 	}
 
-	public byte[] getCover() {
+	public Image getCover() {
 		return cover;
 	}
 
-	public void setCover(byte[] cover) {
+	public void setCover(Image cover) {
 		this.cover = cover;
 	}
 
@@ -101,11 +95,11 @@ public class Book {
 		this.description = description;
 	}
 
-	public List<BookImage> getImmagini() {
+	public List<Image> getImmagini() {
 		return immagini;
 	}
 
-	public void setImmagini(List<BookImage> immagini) {
+	public void setImmagini(List<Image> immagini) {
 		this.immagini = immagini;
 	}
 

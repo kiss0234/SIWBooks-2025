@@ -20,7 +20,7 @@ public class Credentials {
 	private String password;
 	private String role;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy ="credentials")
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
 	public String getUsername() {
