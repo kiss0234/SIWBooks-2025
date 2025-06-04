@@ -45,7 +45,7 @@ public class BookController {
 	
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/admin/formNewBook")
-	public String formNewMovie(Model model) {
+	public String formNewBook(Model model) {
 			model.addAttribute("book", new Book());
 			return "admin/formNewBook";
 	}
