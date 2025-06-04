@@ -16,6 +16,13 @@ body {
     padding: 0;
 }
 
+.vertical-block {
+  width: 60ch;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 .container {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);

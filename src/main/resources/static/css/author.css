@@ -150,6 +150,14 @@ body {
     transform: translateY(-2px);
 }
 
+.vertical-block {
+  width: 60ch;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+
 
 @media (max-width: 768px) {
     .author-main-info {

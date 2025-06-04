@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Author;
 import it.uniroma3.siw.repository.AuthorRepository;
+import jakarta.validation.Valid;
 
 @Service
 public class AuthorService {
@@ -19,6 +20,15 @@ public class AuthorService {
 
 	public Author findById(Long id) {
 		return authorRepository.findById(id).orElseThrow();
+	}
+
+	public boolean existsByNameAndSurname(String name, String surname) {
+		return authorRepository.existsByNameAndSurname(name, surname);
+	}
+
+	public void save(@Valid Author author) {
+		authorRepository.save(author);
+		
 	}
 }
 

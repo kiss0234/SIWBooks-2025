@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Author {
@@ -30,6 +31,7 @@ public class Author {
 	
 	private String nationality;
 	
+	@Size(max = 500, message = "Infos cannot exceed 80 characters")
 	private String infos;
 	
 	@OneToOne(cascade = CascadeType.ALL)

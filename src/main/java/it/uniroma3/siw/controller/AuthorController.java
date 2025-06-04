@@ -1,17 +1,28 @@
 package it.uniroma3.siw.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.controller.validator.AuthorValidator;
+import it.uniroma3.siw.model.Author;
+import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.service.AuthorService;
+import jakarta.validation.Valid;
 
 @Controller
 public class AuthorController {
 	
 	@Autowired AuthorService authorService;
+	@Autowired AuthorValidator authorValidator;
 	
 	@GetMapping("/authors")
 	public String getAuthors(Model model) {
@@ -23,5 +34,46 @@ public class AuthorController {
 	public String getAuthor(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("author", authorService.findById(id));
 		return "author";
+	}
+	
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("/admin/formNewAuthor")
+	public String formNewAuthor(Model model) {
+			model.addAttribute("author", new Author());
+			return "admin/formNewAuthor";
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PostMapping("/admin/newAuthor")
+	public String newAuthor(
+	    @Valid @ModelAttribute Author author,
+	    BindingResult bindingResult,
+	    @RequestParam("thumbnail") MultipartFile imageFile,
+	    Model model) {
+		
+	    if (imageFile == null || imageFile.isEmpty()) {
+	        model.addAttribute("imageError", "Must upload an image.");
+	        return "admin/formNewAuthor";
+	    }
+	    
+	    this.authorValidator.validate(author, bindingResult);
+	    
+	    if (bindingResult.hasErrors()) {
+	        return "admin/formNewAuthor";
+	    }
+	    
+	    try {
+	        Image image = new Image();
+	        image.setData(imageFile.getBytes());
+	        author.setAuthorPhoto(image);
+
+	    } catch (Exception e) {
+	        model.addAttribute("uploadError", "Error rendering the image");
+	        return "admin/formNewAuthor";
+	    }
+
+	    this.authorService.save(author);
+	    return "redirect:/author/" + author.getId();
 	}
 }

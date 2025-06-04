@@ -16,6 +16,12 @@ body {
     padding: 0;
 }
 
+.vertical-block {
+  width: 30ch;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
 .admin-controls {
     position: relative;
@@ -188,7 +194,7 @@ body {
 .book-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    background: linear-gradient(135deg, var(--library-secondary) 0%, var(--library-primary) 100%);
+    background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-dark-green) 100%);
 }
 
 .book-card .row {
@@ -237,7 +243,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+	margin-top: auto;
+	margin-bottom:1.5rem;
 }
 
 .book-link:hover {
