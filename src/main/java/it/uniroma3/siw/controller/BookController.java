@@ -15,7 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import it.uniroma3.siw.controller.validator.BookValidator;
 import it.uniroma3.siw.model.Book;
 import it.uniroma3.siw.model.Image;
+import it.uniroma3.siw.model.Review;
+import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.service.AuthService;
 import it.uniroma3.siw.service.BookService;
+import it.uniroma3.siw.service.ReviewService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -23,6 +27,8 @@ public class BookController {
 
 	@Autowired BookService bookService;
 	@Autowired BookValidator bookValidator;
+	@Autowired AuthService authService;
+	@Autowired ReviewService reviewService;
 	
 	@GetMapping("/books")
 	public String getBooks(Model model) {
@@ -33,7 +39,20 @@ public class BookController {
 	@GetMapping("/book/{id}")
 	public String getBook(@PathVariable("id") Long id, Model model) {
 		Book book = bookService.findById(id);
+		
+		User currentUser = authService.getCurrentUser();
+		boolean canReview = false;
+
+		if (currentUser != null) {
+		    canReview = !reviewService.userHasReviewedBook(book.getId(), currentUser.getId());
+		}
+		model.addAttribute("canReview", canReview);
+		
+	    if (!model.containsAttribute("review")) {
+	        model.addAttribute("review", new Review());
+	    }
 		model.addAttribute("book", book);
+		
 		return "book";
 	}
 	

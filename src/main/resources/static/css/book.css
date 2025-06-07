@@ -175,11 +175,14 @@ body {
 .review-item {
     background: white;
     border-radius: 10px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
+    padding: 2rem;
+    margin: 1rem auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-left: 4px solid var(--library-accent);
     transition: transform 0.3s ease;
+    width: 55rem;
+    max-width: 90vw;
+    box-sizing: border-box;
 }
 
 .review-item:hover {
@@ -188,15 +191,21 @@ body {
 
 .review-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     margin-bottom: 1rem;
 }
 
 .reviewer-name {
     color: var(--primary-burgundy);
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.review-subheader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .review-vote {
@@ -205,6 +214,12 @@ body {
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-weight: bold;
+}
+
+.review-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: var(--primary-dark-green);
 }
 
 .review-description {
@@ -233,5 +248,173 @@ body {
     
     .book-title {
         font-size: 2rem;
+    }
+}
+
+.review-form-section {
+    background: rgba(47, 79, 47, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.review-form-section h3.reviews-title {
+    color: var(--primary-dark-green);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.review-form-section form {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.review-form-section form > div {
+    margin-bottom: 1.5rem;
+}
+
+.review-form-section form label {
+    display: block;
+    color: var(--primary-burgundy);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Georgia', serif;
+}
+
+.review-form-section form input[type="text"],
+.review-form-section form input[type="number"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    background: rgba(245, 245, 220, 0.8);
+    color: var(--library-primary);
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.review-form-section form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    background: rgba(245, 245, 220, 0.8);
+    color: var(--library-primary);
+    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    min-height: 100px;
+}
+
+.review-form-section form input[type="text"]:focus,
+.review-form-section form input[type="number"]:focus,
+.review-form-section form textarea:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    transform: translateY(-1px);
+}
+
+.review-form-section form input[type="text"]:hover,
+.review-form-section form input[type="number"]:hover,
+.review-form-section form textarea:hover {
+    border-color: var(--primary-gold);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.review-form-section form input[type="number"] {
+    max-width: 120px;
+}
+
+.review-form-section form button[type="submit"] {
+    background: linear-gradient(135deg, var(--primary-burgundy), var(--primary-dark-green));
+    color: var(--primary-cream);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(139, 21, 56, 0.3);
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-form-section form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 21, 56, 0.4);
+    background: linear-gradient(135deg, #a01847, #3a5f3a);
+}
+
+.review-form-section form button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(139, 21, 56, 0.3);
+}
+
+.review-form-section form button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.review-form-section form button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+.review-form-section form span {
+    display: block;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .review-form-section {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .review-form-section form {
+        padding: 1.5rem;
+    }
+    
+    .review-form-section form button[type="submit"] {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .review-form-section {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .review-form-section form {
+        padding: 1rem;
+    }
+    
+    .review-form-section form > div {
+        margin-bottom: 1rem;
     }
 }

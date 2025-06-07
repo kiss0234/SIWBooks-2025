@@ -78,6 +78,14 @@ public class User {
 		this.reviews = reviews;
 	}
 
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(email, name, surname);

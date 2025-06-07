@@ -29,7 +29,7 @@ public class Book {
 	private String title;
 	
 	@NotBlank
-	@Size(max = 500, message = "Infos cannot exceed 80 characters")
+	@Size(max = 500, message = "Description cannot exceed 500 characters")
 	private String description; 
 	
 	@NotNull

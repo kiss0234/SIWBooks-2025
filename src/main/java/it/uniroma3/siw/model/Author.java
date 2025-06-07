@@ -31,7 +31,7 @@ public class Author {
 	
 	private String nationality;
 	
-	@Size(max = 500, message = "Infos cannot exceed 80 characters")
+	@Size(max = 500, message = "Infos cannot exceed 500 characters")
 	private String infos;
 	
 	@OneToOne(cascade = CascadeType.ALL)

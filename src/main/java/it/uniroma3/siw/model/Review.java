@@ -8,6 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Review {
@@ -16,10 +21,15 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String title;
 	
-	private int vote;
+	@NotNull
+	@Min(1)
+	@Max(5)
+	private float vote;
 	
+	@Size(max = 300, message = "Description cannot exceed 300 characters")
 	private String description;
 	
 	@ManyToOne
@@ -46,11 +56,11 @@ public class Review {
 		this.title = title;
 	}
 
-	public int getVote() {
+	public float getVote() {
 		return vote;
 	}
 
-	public void setVote(int vote) {
+	public void setVote(float vote) {
 		this.vote = vote;
 	}
 
