@@ -76,4 +76,11 @@ public class AuthorController {
 	    this.authorService.save(author);
 	    return "redirect:/author/" + author.getId();
 	}
+	
+	@PreAuthorize("hasAuthorit('ADMIN')")
+	@GetMapping("/admin/deleteAuthor/{authorId}")
+	public String deleteAuthor(@PathVariable("authorId") Long authorId) {
+		this.authorService.deleteBookById(authorId);
+		return "redirect:/authors";
+	}
 }

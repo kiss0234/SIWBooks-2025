@@ -101,3 +101,8 @@
         margin-left: 2rem;
     }
 }
+
+form.search-form {
+  margin: 0 0 0 1rem !important;
+  padding: 0 !important;
+}

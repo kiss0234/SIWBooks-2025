@@ -33,4 +33,8 @@ public class BookService {
 		List<Book> books = (List<Book>) this.bookRepository.findAllByTitleContaining(title);
 		return books;
 	}
+
+	public void deleteBookById(Long bookId) {
+		bookRepository.deleteById(bookId);
+	}
 }

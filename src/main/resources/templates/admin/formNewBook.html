@@ -52,7 +52,7 @@
 
 		<div>
 			<label>Description:</label>
-			<input required type="text" th:field="${book.description}" />
+			<textarea required type="text" th:field="${book.description}" rows="4" style="resize: vertical;"></textarea>
 			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 		</div>
 

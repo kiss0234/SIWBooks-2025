@@ -69,9 +69,22 @@
 										th:text="${#strings.length(author.infos) > 80} ? ${author.infos.substring(0, 80)} + '...' : ${author.infos}">
 										...
 									</p>
-									<a th:href="@{/author/{authorId} (authorId = ${author.id})}" class="author-link">
-										Continue reading
-									</a>
+									<div class="author-actions" sec:authorize="!hasAuthority('ADMIN')">
+										<a th:href="@{/author/{authorId} (authorId = ${author.id})}" class="author-link">
+											Continue reading
+										</a>
+									</div>
+									<div class="author-actions" sec:authorize="hasAuthority('ADMIN')">
+										<a th:href="@{/author/{authorId} (authorId = ${author.id})}" class="action-btn btn-view">
+											View
+										</a>
+										<a th:href="@{/admin/editAuthor/{authorId} (authorId = ${author.id})}" class="action-btn btn-edit" sec:authorize="hasAuthority('ADMIN')">
+											Edit
+										</a>
+										<a th:href="@{admin/deleteAuthor/{authorId} (authorId = ${author.id})}" class="action-btn btn-delete" sec:authorize="hasAuthority('ADMIN')">
+											Delete
+										</a>
+									</div>
 								</div>
 							</div>
 							<div class="col-4">

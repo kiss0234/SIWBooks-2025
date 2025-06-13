@@ -102,4 +102,10 @@ public class BookController {
 	    return "redirect:/book/" + book.getId();
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("/admin/deleteBook/{bookId}")
+	public String deleteBook(@PathVariable("bookId") Long bookId, Model model) {
+		this.bookService.deleteBookById(bookId);
+		return "redirect:/books";
+	}	
 }

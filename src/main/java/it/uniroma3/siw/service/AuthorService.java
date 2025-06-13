@@ -30,5 +30,9 @@ public class AuthorService {
 		authorRepository.save(author);
 		
 	}
+
+	public void deleteBookById(Long authorId) {
+		authorRepository.deleteById(authorId);
+	}
 }
 

@@ -187,7 +187,9 @@ body {
     margin-bottom: 2rem;
     transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    height: 200px;
+    height: 220px;
+	display: flex;
+	flex-direction: column;
     position: relative;
     color: white;
 }
@@ -199,7 +201,10 @@ body {
 }
 
 .author-card .row {
-    height: 100%;
+  flex: 1;
+  display: flex;
+  height: 100%;
+  margin: 0;
 }
 
 .author-content {
@@ -347,4 +352,81 @@ body {
     .author-content {
         padding: 1.5rem;
     }
+}
+
+.author-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: auto;
+	flex-wrap: wrap;
+}
+
+.action-btn {
+	flex: 1;
+	min-width: 70px;
+	padding: 0.4rem 0.8rem;
+	border: none;
+	border-radius: 8px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-decoration: none;
+	text-align: center;
+	transition: all 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.3rem;
+	cursor: pointer;
+}
+
+.btn-view {
+	background: linear-gradient(135deg, #3498db, #2980b9);
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-view:hover {
+	background: linear-gradient(135deg, #2980b9, #1f5582);
+	color: white;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn-edit {
+	background: linear-gradient(135deg, var(--primary-gold), #b8941f);
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-edit:hover {
+	background: linear-gradient(135deg, #b8941f, #9a7a1a);
+	color: white;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-delete {
+	background: linear-gradient(135deg, #e74c3c, #c0392b);
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-delete:hover {
+	background: linear-gradient(135deg, #c0392b, #a93226);
+	color: white;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+
+.col-8 {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
 }

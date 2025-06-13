@@ -1,3 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
 body {
     background: linear-gradient(135deg, var(--primary-cream) 0%, #F0E68C 100%);
     min-height: 100vh;
@@ -229,4 +238,48 @@ form.book-form div:last-of-type {
 form.book-form input[type="text"]:valid,
 form.book-form input[type="number"]:valid {
     border-color: rgba(135, 169, 107, 0.6);
+}
+
+
+form.book-form textarea[type="text"]:valid {
+    border-color: rgba(135, 169, 107, 0.6);
+}
+
+
+form.book-form textarea[type="text"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid rgba(135, 169, 107, 0.4);
+    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff 0%, rgba(245, 245, 220, 0.5) 100%);
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.06),
+        0 1px 2px rgba(0,0,0,0.04);
+}
+
+form.book-form textarea[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 
+        0 0 0 4px rgba(212, 175, 55, 0.15),
+        inset 0 2px 4px rgba(0,0,0,0.06),
+        0 4px 12px rgba(212, 175, 55, 0.2);
+    background: linear-gradient(145deg, #ffffff 0%, var(--primary-cream) 100%);
+    transform: translateY(-1px);
+}
+
+form.book-form textarea[type="text"]:hover{
+	border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.06),
+        0 2px 8px rgba(212, 175, 55, 0.1);
+    transform: translateY(-1px);
+}
+
+form.book-form textarea[type="text"] {
+    padding: 14px 18px;
+    font-size: 1rem;
 }

@@ -69,9 +69,23 @@
 										th:text="${book.description != null && book.description.length() > 80} ? ${book.description.substring(0, 80)} + '...' : ${book.description}">
 										...
 									</p>
-									<a th:href="@{/book/{bookId} (bookId = ${book.id})}" class="book-link">
-										Continue reading
-									</a>
+									
+									<div class="book-actions" sec:authorize="!hasAuthority('ADMIN')">
+										<a th:href="@{/book/{bookId} (bookId = ${book.id})}" class="book-link">
+											Continue reading
+										</a>
+									</div>
+									<div class="book-actions" sec:authorize="hasAuthority('ADMIN')">
+										<a th:href="@{/book/{bookId} (bookId = ${book.id})}" class="action-btn btn-view">
+											View
+										</a>
+										<a th:href="@{/admin/editBook/{bookId} (bookId = ${book.id})}" class="action-btn btn-edit" sec:authorize="hasAuthority('ADMIN')">
+											Edit
+										</a>
+										<a th:href="@{admin/deleteBook/{bookId} (bookId = ${book.id})}" class="action-btn btn-delete" sec:authorize="hasAuthority('ADMIN')">
+											Delete
+										</a>
+									</div>
 								</div>
 							</div>
 							<div class="col-4">
