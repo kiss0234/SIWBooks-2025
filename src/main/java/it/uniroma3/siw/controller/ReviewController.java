@@ -46,6 +46,12 @@ public class ReviewController {
 
 	    return "redirect:/book/" + bookId;
 	}
+	
+	@PostMapping("/deleteReview/{bookId}/{reviewId}")
+	public String deleteReview(@PathVariable("bookId") Long bookId, @PathVariable("reviewId") Long reviewId) {
+		reviewService.deleteById(reviewId);
+		return "redirect:/book/" + bookId;
+	}
 
 	
 }

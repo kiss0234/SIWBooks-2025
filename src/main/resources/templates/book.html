@@ -86,12 +86,13 @@
 				</div>
 			</div>
 
-			<div class="review-form-section" sec:authorize="isAuthenticated() && !hasAuthority('ADMIN')" th:if="${canReview}" >
+			<div class="review-form-section" sec:authorize="isAuthenticated() && !hasAuthority('ADMIN')"
+				th:if="${canReview}">
 				<h3 class="reviews-title">Write a Review</h3>
 				<form th:action="@{/newReview/{bookId} (bookId=${book.id})}" method="POST" th:object="${review}">
 					<div>
 						<label>Title:</label>
-						<input required type="text" th:field="${review.title}" placeholder="Enter review title..."/>
+						<input required type="text" th:field="${review.title}" placeholder="Enter review title..." />
 						<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
 					</div>
 
@@ -104,7 +105,8 @@
 
 					<div>
 						<label>Vote:</label>
-						<input required type="number" th:field="${review.vote}" min="1" max="5" step="0.5" placeholder="Share your thoughts about this book..."/>
+						<input required type="number" th:field="${review.vote}" min="1" max="5" step="0.5"
+							placeholder="Share your thoughts about this book..." />
 						<span th:if="${#fields.hasErrors('vote')}" th:errors="*{vote}"></span>
 					</div>
 
@@ -113,54 +115,61 @@
 			</div>
 
 
-				<div class="reviews-section">
-					<h3 class="reviews-title">Reader Reviews</h3>
-					<div class="review-item" th:each="review : ${book.reviews}">
-					  <div class="review-header">
-					    <span class="reviewer-name" th:text="${review.user.credentials.username}">Marco Rossi</span>
-					    <div class="review-subheader">
-					      <span class="review-vote">
-					        ⭐ <span th:text="${review.vote}">5</span>
-					      </span>
-					      <span class="review-title" th:text="${review.title}">Lovely</span>
-					    </div>
-					  </div>
-					  <div class="review-description vertical-block" th:text="${review.description}">
-					    Beautiful book!
-					  </div>
+			<div class="reviews-section">
+				<h3 class="reviews-title">Reader Reviews</h3>
+				<div class="review-item" th:each="review : ${book.reviews}">
+					<div class="review-header">
+						<div class="review-header-top">
+							<span class="reviewer-name" th:text="${review.user.credentials.username}">Marco Rossi</span>
+							<form th:action="@{/deleteReview/{bookId}/{reviewId} (bookId=${book.id}, reviewId=${review.id})}"method="POST" sec:authorize="hasAuthority('ADMIN')" style="display: inline;">
+								<button type="submit" class="admin-delete-btn" title="Delete Review">
+									Delete
+								</button>
+							</form>
+						</div>
+						<div class="review-subheader">
+							<span class="review-vote">
+								⭐ <span th:text="${review.vote}">5</span>
+							</span>
+							<span class="review-title" th:text="${review.title}">Lovely</span>
+						</div>
 					</div>
-					
-					<div th:if="${book.reviews.isEmpty()}" class="no-reviews">
-						📝 No reviews yet - Be the first to share your thoughts!
+					<div class="review-description vertical-block" th:text="${review.description}">
+						Beautiful book!
 					</div>
+				</div>
+
+				<div th:if="${book.reviews.isEmpty()}" class="no-reviews">
+					📝 No reviews yet - Be the first to share your thoughts!
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<footer class="footer mt-5">
-			<div class="container-fluid footer-content">
-				<div class="row">
-					<div class="col-md-4 footer-section">
-						<h5>About Us</h5>
-						<p>Providing the best books and resources for readers everywhere.</p>
-					</div>
-					<div class="col-md-4 footer-section">
-						<h5>Contact</h5>
-						<ul>
-							<li>Email: info@siwbooks.com</li>
-							<li>Phone: +123 456 7890</li>
-						</ul>
-					</div>
+	<footer class="footer mt-5">
+		<div class="container-fluid footer-content">
+			<div class="row">
+				<div class="col-md-4 footer-section">
+					<h5>About Us</h5>
+					<p>Providing the best books and resources for readers everywhere.</p>
 				</div>
-				<div class="footer-bottom mt-3">
-					&copy; 2025 SiwBooks. All rights reserved.
+				<div class="col-md-4 footer-section">
+					<h5>Contact</h5>
+					<ul>
+						<li>Email: info@siwbooks.com</li>
+						<li>Phone: +123 456 7890</li>
+					</ul>
 				</div>
 			</div>
-		</footer>
+			<div class="footer-bottom mt-3">
+				&copy; 2025 SiwBooks. All rights reserved.
+			</div>
+		</div>
+	</footer>
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-			crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>
