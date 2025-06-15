@@ -15,7 +15,8 @@ public class AuthorValidator implements Validator{
 
 	@Override
 	public void validate(Object o, Errors errors) {
-		Author author = (Author)o;
+		Author author = (Author) o;
+		
 		if (author.getName()!=null && author.getSurname()!=null && authorService.existsByNameAndSurname(author.getName(), author.getSurname())) {
 			errors.reject("author.duplicate", "This author already exists");
 		}

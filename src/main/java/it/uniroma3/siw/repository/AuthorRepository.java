@@ -8,4 +8,5 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
 
 	boolean existsByNameAndSurname(String name, String surname);
 
+	Author findByNameAndSurname(String name, String surname);
 }

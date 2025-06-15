@@ -77,10 +77,65 @@ public class AuthorController {
 	    return "redirect:/author/" + author.getId();
 	}
 	
-	@PreAuthorize("hasAuthorit('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/admin/deleteAuthor/{authorId}")
 	public String deleteAuthor(@PathVariable("authorId") Long authorId) {
 		this.authorService.deleteBookById(authorId);
 		return "redirect:/authors";
 	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("/admin/editAuthor/{authorId}")
+	public String editAuthor(@PathVariable("authorId") Long authorId, Model model) {
+		model.addAttribute("author", authorService.findById(authorId));
+		return "admin/editAuthor";
+	}
+	
+	@PostMapping("/admin/editAuthor")
+	public String editAuthor(@Valid @ModelAttribute Author author,
+	                         BindingResult bindingResult,
+	                         @RequestParam("thumbnail") MultipartFile authorPhoto,
+	                         Model model) {
+
+	    if (bindingResult.hasErrors()) {
+	        return "admin/editAuthor";
+	    }
+
+	    Author existingAuthor = authorService.findById(author.getId());
+	    
+	    if (existingAuthor == null) {
+	        model.addAttribute("error", "Author not found.");
+	        return "admin/editAuthor";
+	    }
+	    
+	    Author duplicate = authorService.findByNameAndSurname(author.getName(), author.getSurname());
+	    
+	    if (duplicate != null && !duplicate.getId().equals(author.getId())) {
+	        model.addAttribute("duplicateAuthor", "There is already an author with the same name and surname");
+	        return "admin/editAuthor";
+	    }
+
+	    existingAuthor.setName(author.getName());
+	    existingAuthor.setSurname(author.getSurname());
+	    existingAuthor.setNationality(author.getNationality());
+	    existingAuthor.setDateOfBirth(author.getDateOfBirth());
+	    existingAuthor.setDateOfDeath(author.getDateOfDeath());
+	    existingAuthor.setInfos(author.getInfos());
+	    
+	    if (authorPhoto != null && !authorPhoto.isEmpty()) {
+	        try {
+	            Image image = new Image();
+	            image.setData(authorPhoto.getBytes());
+	            existingAuthor.setAuthorPhoto(image);
+	        } catch (Exception e) {
+	            model.addAttribute("uploadError", "Error rendering the image");
+	            return "admin/editAuthor";
+	        }
+	    }
+
+	    authorService.save(existingAuthor);
+
+	    return "redirect:/author/" + existingAuthor.getId();
+	}
+
 }
