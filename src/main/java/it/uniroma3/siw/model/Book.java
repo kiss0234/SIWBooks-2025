@@ -39,7 +39,7 @@ public class Book {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Image cover;
 	
-	@ManyToMany(mappedBy="books")
+	@ManyToMany
 	private List<Author> authors;
 	
 	@OneToMany(cascade = CascadeType.ALL)
