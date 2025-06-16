@@ -37,7 +37,7 @@ public class Author {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Image authorPhoto;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="authors")
 	private List<Book> books;
 	
 	public Long getId() {

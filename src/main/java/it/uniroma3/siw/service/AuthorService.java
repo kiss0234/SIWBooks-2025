@@ -31,12 +31,16 @@ public class AuthorService {
 		
 	}
 
-	public void deleteBookById(Long authorId) {
+	public void deleteAuthorById(Long authorId) {
 		authorRepository.deleteById(authorId);
 	}
 
 	public Author findByNameAndSurname(String name, String surname) {
 		return authorRepository.findByNameAndSurname(name, surname);
+	}
+
+	public List<Author> findAuthorsNotInBook(Long bookId) {
+		return (List<Author>) authorRepository.findAuthorsNotInBook(bookId);
 	}
 }
 

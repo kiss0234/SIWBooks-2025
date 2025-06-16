@@ -14,8 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.controller.validator.AuthorValidator;
 import it.uniroma3.siw.model.Author;
+import it.uniroma3.siw.model.Book;
 import it.uniroma3.siw.model.Image;
 import it.uniroma3.siw.service.AuthorService;
+import it.uniroma3.siw.service.BookService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -23,6 +25,7 @@ public class AuthorController {
 	
 	@Autowired AuthorService authorService;
 	@Autowired AuthorValidator authorValidator;
+	@Autowired BookService bookService;
 	
 	@GetMapping("/authors")
 	public String getAuthors(Model model) {
@@ -80,7 +83,14 @@ public class AuthorController {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/admin/deleteAuthor/{authorId}")
 	public String deleteAuthor(@PathVariable("authorId") Long authorId) {
-		this.authorService.deleteBookById(authorId);
+		Author author = authorService.findById(authorId);
+		
+		for(Book book : author.getBooks()) {
+			book.getAuthors().remove(author);
+			bookService.save(book);
+		}
+		
+		this.authorService.deleteAuthorById(authorId);
 		return "redirect:/authors";
 	}
 	
@@ -137,5 +147,4 @@ public class AuthorController {
 
 	    return "redirect:/author/" + existingAuthor.getId();
 	}
-
 }

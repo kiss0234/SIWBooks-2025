@@ -136,7 +136,7 @@ form.book-form .form-control[type="file"]::before {
 }
 
 form.book-form .form-label {
-    color: var(--primary-dark-green);
+    color: var(--primary-burgundy);
     font-weight: bold;
     font-size: 1.15rem;
     text-transform: uppercase;

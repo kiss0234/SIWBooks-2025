@@ -15,7 +15,7 @@ body {
     padding: 0;
 }
 
-form.author-form {
+form.book-form {
     max-width: 700px;
     margin: 4rem auto;
     background: linear-gradient(145deg, var(--primary-cream) 0%, #fff 50%, var(--primary-cream) 100%);
@@ -30,8 +30,8 @@ form.author-form {
     animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-form.author-form::before {
-    content: 'Add New Author';
+form.book-form::before {
+    content: 'Edit Book';
     position: absolute;
     top: -25px;
     left: 50%;
@@ -47,7 +47,7 @@ form.author-form::before {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-form.author-form label {
+form.book-form label {
     display: block;
     margin-bottom: 10px;
     font-weight: 600;
@@ -58,14 +58,13 @@ form.author-form label {
     letter-spacing: 0.5px;
 }
 
-form.author-form > div {
+form.book-form > div {
     margin-bottom: 2rem;
     position: relative;
 }
 
-form.author-form input[type="date"],
-form.author-form input[type="text"],
-form.author-form input[type="number"] {
+form.book-form input[type="text"],
+form.book-form input[type="number"] {
     width: 100%;
     padding: 16px 20px;
     border: 2px solid rgba(135, 169, 107, 0.4);
@@ -79,9 +78,8 @@ form.author-form input[type="number"] {
         0 1px 2px rgba(0,0,0,0.04);
 }
 
-form.author-form input[type="date"],
-form.author-form input[type="text"]:focus,
-form.author-form input[type="number"]:focus {
+form.book-form input[type="text"]:focus,
+form.book-form input[type="number"]:focus {
     outline: none;
     border-color: var(--primary-gold);
     box-shadow: 
@@ -92,9 +90,8 @@ form.author-form input[type="number"]:focus {
     transform: translateY(-1px);
 }
 
-form.author-form input[type="date"],
-form.author-form input[type="text"]:hover,
-form.author-form input[type="number"]:hover {
+form.book-form input[type="text"]:hover,
+form.book-form input[type="number"]:hover {
     border-color: rgba(212, 175, 55, 0.6);
     box-shadow: 
         inset 0 2px 4px rgba(0,0,0,0.06),
@@ -102,7 +99,7 @@ form.author-form input[type="number"]:hover {
     transform: translateY(-1px);
 }
 
-form.author-form .form-control[type="file"] {
+form.book-form .form-control[type="file"] {
     width: 100%;
     padding: 25px;
     border: 3px dashed rgba(135, 169, 107, 0.5);
@@ -119,7 +116,7 @@ form.author-form .form-control[type="file"] {
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
 
-form.author-form .form-control[type="file"]:hover {
+form.book-form .form-control[type="file"]:hover {
     border-color: var(--primary-gold);
     background: 
         radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
@@ -131,14 +128,14 @@ form.author-form .form-control[type="file"]:hover {
         0 4px 12px rgba(212, 175, 55, 0.15);
 }
 
-form.author-form .form-control[type="file"]::before {
+form.book-form .form-control[type="file"]::before {
     content: '📖';
     font-size: 2rem;
     display: block;
     margin-bottom: 8px;
 }
 
-form.author-form .form-label {
+form.book-form .form-label {
     color: var(--primary-burgundy);
     font-weight: bold;
     font-size: 1.15rem;
@@ -147,7 +144,7 @@ form.author-form .form-label {
     position: relative;
 }
 
-form.author-form button[type="submit"] {
+form.book-form button[type="submit"] {
     background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-dark-green) 50%, var(--primary-burgundy) 100%);
     color: var(--primary-cream);
     border: none;
@@ -167,7 +164,7 @@ form.author-form button[type="submit"] {
     margin-top: 1rem;
 }
 
-form.author-form button[type="submit"]::before {
+form.book-form button[type="submit"]::before {
     content: '';
     position: absolute;
     top: 0;
@@ -178,7 +175,7 @@ form.author-form button[type="submit"]::before {
     transition: left 0.6s;
 }
 
-form.author-form button[type="submit"]:hover {
+form.book-form button[type="submit"]:hover {
     transform: translateY(-3px);
     box-shadow: 
         0 12px 35px rgba(139, 21, 56, 0.4),
@@ -187,42 +184,41 @@ form.author-form button[type="submit"]:hover {
     background: linear-gradient(135deg, var(--primary-dark-green) 0%, var(--primary-burgundy) 50%, var(--primary-dark-green) 100%);
 }
 
-form.author-form button[type="submit"]:hover::before {
+form.book-form button[type="submit"]:hover::before {
     left: 100%;
 }
 
-form.author-form button[type="submit"]:active {
+form.book-form button[type="submit"]:active {
     transform: translateY(-1px);
     box-shadow: 
         0 6px 20px rgba(139, 21, 56, 0.3),
         inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
-form.author-form div:last-of-type {
+form.book-form .submit-container {
     text-align: center;
     margin-top: 2.5rem;
 }
 
 @media (max-width: 768px) {
-    form.author-form {
+    form.book-form {
         margin: 2rem 1rem;
         padding: 2.5rem 2rem;
     }
 
-    form.author-form::before {
+    form.book-form::before {
         font-size: 1rem;
         padding: 10px 25px;
     }
 
-    form.author-form button[type="submit"] {
+    form.book-form button[type="submit"] {
         width: 100%;
         padding: 18px;
         font-size: 1.1rem;
     }
 
-	form.author-form input[type="date"],
-    form.author-form input[type="text"],
-    form.author-form input[type="number"] {
+    form.book-form input[type="text"],
+    form.book-form input[type="number"] {
         padding: 14px 18px;
         font-size: 1rem;
     }
@@ -239,12 +235,18 @@ form.author-form div:last-of-type {
     }
 }
 
-form.author-form textarea[type="text"]:valid {
+form.book-form input[type="text"]:valid,
+form.book-form input[type="number"]:valid {
     border-color: rgba(135, 169, 107, 0.6);
 }
 
 
-form.author-form textarea[type="text"] {
+form.book-form textarea[type="text"]:valid {
+    border-color: rgba(135, 169, 107, 0.6);
+}
+
+
+form.book-form textarea[type="text"] {
     width: 100%;
     padding: 16px 20px;
     border: 2px solid rgba(135, 169, 107, 0.4);
@@ -258,7 +260,7 @@ form.author-form textarea[type="text"] {
         0 1px 2px rgba(0,0,0,0.04);
 }
 
-form.author-form textarea[type="text"]:focus {
+form.book-form textarea[type="text"]:focus {
     outline: none;
     border-color: var(--primary-gold);
     box-shadow: 
@@ -269,7 +271,7 @@ form.author-form textarea[type="text"]:focus {
     transform: translateY(-1px);
 }
 
-form.author-form textarea[type="text"]:hover{
+form.book-form textarea[type="text"]:hover{
 	border-color: rgba(212, 175, 55, 0.6);
     box-shadow: 
         inset 0 2px 4px rgba(0,0,0,0.06),
@@ -277,7 +279,158 @@ form.author-form textarea[type="text"]:hover{
     transform: translateY(-1px);
 }
 
-form.author-form textarea[type="text"] {
+form.book-form textarea[type="text"] {
     padding: 14px 18px;
     font-size: 1rem;
+}
+
+form.book-form .authors-section {
+    margin-top:2rem;
+    position: relative;
+}
+
+form.book-form .authors-section > div:first-child {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-burgundy);
+    font-size: 1.15rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+form.book-form .author-oval {
+    display: inline-block;
+	background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold) 100%);	color: var(--library-primary);
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 
+        0 3px 8px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(139, 21, 56, 0.2);
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+}
+
+form.book-form .author-oval:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 2px 6px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+form.book-form .no-authors-message {
+    color: #888;
+    font-style: italic;
+    font-size: 1rem;
+    text-align: center;
+    padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    form.book-form .authors-container {
+        padding: 10px 12px;
+        min-height: 40px;
+        gap: 10px;
+    }
+    
+    form.book-form .author-oval {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+form.book-form .authors-section label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    color: var(--primary-burgundy);
+    font-size: 1.15rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+form.book-form .authors-display-container {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid rgba(135, 169, 107, 0.4);
+    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff 0%, rgba(245, 245, 220, 0.5) 100%);
+    box-sizing: border-box;
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.06),
+        0 1px 2px rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    min-height: 56px;
+}
+
+form.book-form .authors-display-container:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 
+        inset 0 2px 4px rgba(0,0,0,0.06),
+        0 2px 8px rgba(212, 175, 55, 0.1);
+    transform: translateY(-1px);
+}
+
+form.book-form .author-oval:hover {
+    background: linear-gradient(135deg, #DAA520 0%, var(--primary-gold) 100%);
+    color: var(--primary-burgundy);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 10px rgba(212, 175, 55, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+form.book-form .no-authors-message {
+    color: #888;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.manage-authors-btn {
+    background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-dark-green) 50%, var(--primary-burgundy) 100%);
+    color: var(--primary-cream);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 12px rgba(47, 79, 47, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+	margin-top:10px;
+}
+
+.manage-authors-btn:hover {
+	background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-dark-green) 50%, var(--primary-burgundy) 100%);
+    color: var(--primary-cream);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 18px rgba(47, 79, 47, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.manage-authors-btn:active {
+    transform: translateY(0);
+    box-shadow: 
+        0 3px 8px rgba(47, 79, 47, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
 }
