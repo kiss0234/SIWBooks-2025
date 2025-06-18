@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,7 +39,7 @@ public class Author {
 	private Image authorPhoto;
 	
 	@ManyToMany(mappedBy="authors")
-	private List<Book> books;
+	private List<Book> books = new ArrayList<>();
 	
 	public Long getId() {
 		return id;

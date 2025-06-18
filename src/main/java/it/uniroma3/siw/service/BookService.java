@@ -41,4 +41,8 @@ public class BookService {
 	public Book findByTitle(String title) {
 		return bookRepository.findByTitle(title);
 	}
+
+	public List<Book> findBooksNotInAuthor(Long authorId) {
+		return (List<Book>) bookRepository.findBooksNotInAuthor(authorId);
+	}
 }

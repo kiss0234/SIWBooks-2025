@@ -63,7 +63,7 @@ public class BookController {
 	
 	@GetMapping("/searchBook")
 	public String searchBook(@RequestParam("booktitle") String title, Model model) {
-		model.addAttribute("books", this.bookService.findAllByTitleContaining(title));
+		model.addAttribute("books", bookService.findAllByTitleContaining(title));
 		return "books";
 	}
 	
