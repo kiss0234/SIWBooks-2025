@@ -87,6 +87,25 @@
 				th:value="${author.dateOfDeath != null ? #temporals.format(author.dateOfDeath, 'yyyy-MM-dd') : ''}" />
 			<span th:if="${#fields.hasErrors('dateOfDeath')}" th:errors="*{dateOfDeath}"></span>
 		</div>
+		
+		<div class="books-section">
+		    <label>Books:</label>
+		    <div class="books-display-container" th:if="${!author.books.isEmpty()}">
+		        <a th:each="book : ${author.books}" 
+		           th:href="@{/book/{bookId}(bookId=${book.id})}"
+		           th:text="${book.title}"
+		           class="book-oval">
+		        </a>
+		    </div>
+		    <div class="books-display-container" th:if="${author.books.isEmpty()}">
+		        <span class="no-books-message">No books assigned to this author yet.</span>
+		    </div>
+			
+			<a th:href="@{/admin/editAuthor/{authorId}/books (authorId=${author.id})}" 
+			   class="manage-books-btn">
+			    Manage Books
+			</a>
+		</div>
 
 		<div class="mb-3">
 			<label for="formFile" class="form-label">Author Photo:</label>

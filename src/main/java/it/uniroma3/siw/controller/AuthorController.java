@@ -1,5 +1,7 @@
 package it.uniroma3.siw.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -146,5 +148,46 @@ public class AuthorController {
 	    authorService.save(existingAuthor);
 
 	    return "redirect:/author/" + existingAuthor.getId();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("admin/editAuthor/{authorId}/books")
+	public String manageAuthorBooks(@PathVariable("authorId") Long authorId, Model model) {
+		List<Book> availableBooks = bookService.findBooksNotInAuthor(authorId);
+		
+		model.addAttribute("availableBooks", availableBooks);
+		model.addAttribute("author", authorService.findById(authorId));
+		
+		return "admin/manageAuthorBooks";
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PostMapping("admin/removeBookFromAuthor/{authorId}/{bookId}")
+	public String removeBoomFromAuthor(@PathVariable("authorId") Long authorId, @PathVariable("bookId") Long bookId, Model model) {
+		
+		Book book = bookService.findById(bookId);
+		Author author = authorService.findById(authorId);
+		
+		List<Author> authors = book.getAuthors();
+		authors.remove(author);
+		
+		bookService.save(book);
+		
+		return "redirect:/admin/editAuthor/" + authorId + "/books";
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@PostMapping("admin/addBookToAuthor/{authorId}/{bookId}")
+	public String addBookToAuthor(@PathVariable("authorId") Long authorId, @PathVariable("bookId") Long bookId, Model model) {
+		
+		Book book = bookService.findById(bookId);
+		Author author = authorService.findById(authorId);
+		
+		List<Author> authors = book.getAuthors();
+		authors.add(author);
+		
+		bookService.save(book);
+		
+		return "redirect:/admin/editAuthor/" + authorId + "/books";
 	}
 }
