@@ -1,8 +1,10 @@
 package it.uniroma3.siw.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -33,9 +35,9 @@ public class User {
 	private String email;
 	
 	@OneToMany(mappedBy="user")
-	private List<Review> reviews;
+	private List<Review> reviews = new ArrayList<>();
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy ="user")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy ="user", cascade = CascadeType.ALL)
 	private Credentials credentials;
 
 	public Long getId() {

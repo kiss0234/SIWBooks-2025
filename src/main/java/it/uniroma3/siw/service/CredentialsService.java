@@ -38,4 +38,9 @@ public class CredentialsService {
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }
+
+	public void updatePassword(Credentials credentials, String newPassword) {
+        credentials.setPassword(this.passwordEncoder.encode(newPassword));
+        this.credentialsRepository.save(credentials);
+	}
 }

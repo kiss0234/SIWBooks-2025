@@ -74,7 +74,6 @@ public class AuthenticationController {
                  BindingResult credentialsBindingResult,
                  Model model, RedirectAttributes redirectAttributes) {
 
-		// se user e credential hanno entrambi contenuti validi, memorizza User e the Credentials nel DB
         if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             userService.saveUser(user);
             credentials.setUser(user);
