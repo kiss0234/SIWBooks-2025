@@ -116,13 +116,13 @@ public class BookController {
 	
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/admin/editBook/{bookId}")
-	public String editBook(@PathVariable("bookId") Long bookId, Model model) {
+	public String getEditBookForm(@PathVariable("bookId") Long bookId, Model model) {
 		model.addAttribute("book", bookService.findById(bookId));
 		return "admin/editBook";
 	}
 	
 	@PostMapping("/admin/editBook")
-	public String editAuthor(@Valid @ModelAttribute Book book,
+	public String editBook(@Valid @ModelAttribute Book book,
 	                         BindingResult bindingResult,
 	                         @RequestParam("thumbnail") MultipartFile cover,
 	                         Model model) {
