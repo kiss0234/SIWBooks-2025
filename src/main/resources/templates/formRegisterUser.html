@@ -55,6 +55,7 @@
 					<div class="error-message" th:if="${#fields.hasErrors('credentials.username')}"
 						th:errors="${credentials.username}"></div>
 				</div>
+					<span class="error-message" th:if="${usernameDuplicate}" th:text="${usernameDuplicate}"></span>
 
 				<div class="mb-2">
 					<label for="exampleFormControlInput5" class="form-label">Password</label>
