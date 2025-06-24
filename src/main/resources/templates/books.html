@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -45,7 +44,7 @@
 		<div class="container">
 			<div class="page-header">
 				<h1 class="page-title">SiwBooks Library</h1>
-				<p class="page-subtitle">Discover your next great read</p>
+				<p class="page-subtitle">Discover everything about your next great read</p>
 				<div class="decorative-divider"></div>
 			</div>
 
@@ -66,12 +65,12 @@
 						<div class="row g-0 h-100">
 							<div class="col-8">
 								<div class="book-content">
-									<h3 class="book-title" th:text="${book.title}">Featured post</h3>
+									<h3 class="book-title" th:text="${book.title}">Dante
+										Alighieri</h3>
 									<p class="vertical-block"
-										th:text="${book.description != null && book.description.length() > 80} ? ${book.description.substring(0, 80)} + '...' : ${book.description}">
+										th:text="${#strings.length(book.description) > 80} ? ${book.description.substring(0, 80)} + '...' : ${book.description}">
 										...
 									</p>
-									
 									<div class="book-actions" sec:authorize="!hasAuthority('ADMIN')">
 										<a th:href="@{/book/{bookId} (bookId = ${book.id})}" class="book-link">
 											Continue reading
@@ -93,8 +92,9 @@
 							<div class="col-4">
 								<div class="book-image-container">
 									<img th:if="${book.cover.base64Image != null}"
-										th:src="'data:image/jpeg;base64,' + ${book.cover.base64Image}" alt="Book Cover"
-										class="book-image" />
+										th:src="'data:image/jpeg;base64,' + ${book.cover.base64Image}"
+										alt="book Cover" class="book-image" />
+
 									<div th:if="${book.cover.base64Image == null}" class="placeholder-img">
 										📚
 									</div>

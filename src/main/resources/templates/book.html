@@ -101,7 +101,7 @@
 					<div>
 						<label>Description:</label>
 						<textarea required type="text" th:field="${review.description}" rows="4"
-							style="resize: vertical;"></textarea>
+							style="resize: vertical;" placeholder="Share you thoughts about this book..."></textarea>
 						<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 					</div>
 
