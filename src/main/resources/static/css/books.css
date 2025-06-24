@@ -16,17 +16,17 @@ body {
     padding: 0;
 }
 
+.admin-controls {
+    position: relative;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .vertical-block {
   width: 30ch;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-}
-
-.admin-controls {
-    position: relative;
-    text-align: center;
-    margin-bottom: 2rem;
 }
 
 .add-book-btn {
@@ -124,6 +124,7 @@ body {
         right: 20px;
     }
 }
+
 .album {
     padding: 3rem 0;
 }
@@ -185,7 +186,7 @@ body {
     margin-bottom: 2rem;
     transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  	height: 220px;
+    height: 220px;
 	display: flex;
 	flex-direction: column;
     position: relative;
@@ -248,7 +249,7 @@ body {
     align-items: center;
     gap: 0.5rem;
 	margin-top: auto;
-	margin-bottom:0.5rem;	
+	margin-bottom:0.5rem;
 }
 
 .book-link:hover {
