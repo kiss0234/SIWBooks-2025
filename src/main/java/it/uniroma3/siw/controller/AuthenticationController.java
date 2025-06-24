@@ -74,6 +74,11 @@ public class AuthenticationController {
                  BindingResult credentialsBindingResult,
                  Model model, RedirectAttributes redirectAttributes) {
 
+		if(credentialsService.existsByUsername(credentials.getUsername())) {
+			model.addAttribute("usernameDuplicate", "This username is already taken");
+			return "formRegisterUser";
+		}
+		
         if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             userService.saveUser(user);
             credentials.setUser(user);
